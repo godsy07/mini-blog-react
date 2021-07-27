@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
 
-function App() {
+import Navbar from "./components/navbar/Navbar";
+import HomePage from "./components/homepage/Homepage";
+
+const App = () => {
+  const [blogs, setBlogs] = useState();
+
+  useEffect(() => {
+    const fetchdata = (url) => {
+      fetch(url)
+        .then((res) => res.json())
+        .then((data) => setBlogs(data));
+    };
+
+    fetchdata("http://localhost:5000/blogs");
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='app'>
+      <header>
+        <Navbar />
       </header>
+      <Switch>
+        <Route exact path='/'>
+          {blogs && <HomePage blogs={blogs} />}
+        </Route>
+      </Switch>
     </div>
   );
-}
+};
 
 export default App;
