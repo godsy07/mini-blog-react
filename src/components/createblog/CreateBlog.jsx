@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import "./createblog.css";
 
@@ -6,6 +7,7 @@ const CreateBlog = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
   const [author, setAuthor] = useState("");
+  const history = useHistory();
 
   const [isPending, setIsPending] = useState(false);
 
@@ -20,6 +22,7 @@ const CreateBlog = () => {
       body: JSON.stringify(blog),
     }).then(() => {
       setIsPending(false);
+      history.push("/");
     });
 
     setTitle("");
