@@ -9,7 +9,7 @@ const Homepage = () => {
     data: blogs,
     isLoading,
     error,
-  } = useFetch("http://localhost:5000/blogs");
+  } = useFetch("http://localhost:5000/blogs/");
 
   return (
     <div className='homepage'>

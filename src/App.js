@@ -5,6 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import HomePage from "./components/homepage/Homepage";
 import CreateBlog from "./components/createblog/CreateBlog";
 import BlogItem from "./components/blog-item/BlogItem";
+import NotFound from "./components/NotFound.jsx";
 
 const App = () => {
   return (
@@ -21,6 +22,9 @@ const App = () => {
         </Route>
         <Route exact path='/blogs/:id'>
           <BlogItem />
+        </Route>
+        <Route exact path='*'>
+          <NotFound />
         </Route>
       </Switch>
     </div>
