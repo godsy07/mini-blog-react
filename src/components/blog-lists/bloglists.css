@@ -1,0 +1,9 @@
+.blog-preview {
+  padding: 5px 20px;
+  box-sizing: border-box;
+  border: none;
+  margin-bottom: 10px;
+}
+.blog-preview:hover {
+  box-shadow: 3px 5px 10px #333;
+}
